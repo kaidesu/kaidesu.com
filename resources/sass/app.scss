@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;900&family=Ubuntu+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "prism";
+
+html, body {
+    @apply font-sans h-full flex flex-col;
+}
+
+
+code {
+    @apply px-1 py-1 text-black font-semibold font-mono text-sm;
+}
+
+pre, pre[class*="language-"] {
+    @apply p-6 font-mono font-normal leading-none max-w-full overflow-x-auto rounded;
+
+    font-size: 1em;
+
+    & + p {
+        @apply mt-4;
+    }
+
+    & > code[class*="language-"] {
+        @apply p-0 border-none leading-relaxed;
+    }
+}
