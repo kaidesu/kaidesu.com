@@ -21,12 +21,28 @@ My primary focus has been back-end PHP development, building systems, platforms,
 ### Director of Application Development
 efelle creative, Seatlle, WA — (August 2017 - Present)
 
-- item
+- Manage a team of ~4 application developers and system administrators.
+- Formed the system administrators department as a dedicated team focused on hosting and monitoring of over 300 websites.
+- Designed and lead development of FusionCMS version five.
+- Designed and developed the Matrix system, a means of auto-generating system architecture based on content needs. Drastically cut down design, development and content entry hours.
+- Designed and lead development of FusionCMS version six. Version six was built API-first with an SPA control panel developed in Vue. Version six was made completely free and open source (MIT).
+- Designed and developed the release and auto-update service for FusionCMS v5, aptly named Launchpad w/ GitHub integration and automated bug tracking.
+- Designed and developed in house tools to help streamline and automate company tasks:
+    - Accounts, a company-wide single sign on service
+    - Athena, a secure and encrypted password vault
+    - Apollo, an uptime and website monitoring service w/ Slack notifications monitoring all 300+ hosted websites with minute-by-minute status checks
+- Delegate development tasks with other application developers, including add-on development, new feature development, and bug fixes.
+- Developed custom web scrapers and import tools to facilitate content migrations.
+- Facilitate front-end development team, building advanced Vue components.
 
 ### Application Developer
 efelle creative, Seattle, WA — (June 2013 - August 2017)
 
-- item
+- Facilitated development on FusionCMS version four, building new .
+- Built custom modules based on client projects.
+- Designed and developed a custom PHP framework, used to power the company's mobile-specific website builds.
+- Facilitated front-end development, building advanced PHP logic based on project specifications.
+- Responded to the company's final tier support
 
 ### Developer / Support Technician
 Electric Function, Seattle, WA — (October 2012 - June 2013)

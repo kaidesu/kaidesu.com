@@ -3,8 +3,8 @@
 
     <div class="flex items-center text-sm">
         <a href="/" class="mr-4">/home</a>
-        {{-- <a href="/whois" class="mr-4">/whois</a>
-        <a href="/uses" class="mr-4">/uses</a>
-        <a href="/now" class="mr-4">/now</a> --}}
+        <a href="/whois" class="mr-4">/whois</a>
+        {{-- <a href="/uses" class="mr-4">/uses</a> --}}
+        {{-- <a href="/now" class="mr-4">/now</a> --}}
     </div>
 </div>
