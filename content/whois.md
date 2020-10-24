@@ -6,7 +6,7 @@ draft: true
 
 Hi there 👋 My name is <u>Shea Lewis</u>, but friends call me **Kai**.
 
-こんにちは 👋 私の名前は「シェア・ルレス」ですが、友達は私を「カイ」と申します。日本語を少し話します。どうぞよろしくお願いします。
+こんにちは 👋 私の名前は「シェア・ルレス」ですが、友達は私を「カイ」と申します。日本語を少し話せます。どうぞよろしくお願いします。
 
 I'm a web developer based in **Seattle** with over 8 years of experience building web-based software solutions.
 
