@@ -1,4 +1,4 @@
-<div class="bg-gray-100 px-6 py-3 flex justify-between items-center">
+<div class="px-6 py-3 flex justify-between items-center border-b border-gray-200">
     <a href="/" class="font-bold">kai desu.</a>
 
     <div class="flex items-center text-sm">
