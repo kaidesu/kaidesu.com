@@ -40,11 +40,11 @@ efelle creative, Seatlle, WA — (August 2017 - Present)
 ### Application Developer
 efelle creative, Seattle, WA — (June 2013 - August 2017)
 
-- Facilitated development on FusionCMS version four, building new .
+- Facilitated development on FusionCMS version four, building new tools to more efficiently import and manage client content.
 - Built custom modules based on client projects.
-- Designed and developed a custom PHP framework, used to power the company's mobile-specific website builds.
+- Designed and developed a custom PHP framework for mobile-specific website builds. This allowed for rapid deployment and upkeep of mobile-specific sites.
 - Facilitated front-end development, building advanced PHP logic based on project specifications.
-- Responded to the company's final tier support
+- Worked directly with Customer Support on Tier 3 (top level) tickets that dealt with both proprietary and 3rd party php code as well as system architecture.
 
 ### Developer / Support Technician
 Electric Function, Seattle, WA — (October 2012 - June 2013)
@@ -74,7 +74,7 @@ Ghost is a small embeddable scripting language developed in Go. I started the de
 ### Engine
 Go, https://github.com/ghost-language/engine
 
-Engine is a simple 2D game engine developed in Go using the SDL2 library. Engine is still very much in early development as the goal is to utilize and fully embed Ghost as the primary scripting language. This will effectively allow games to be fully developed utilizing Ghost. Currently it has Ghost embedded with the ability to render PNG images.
+Engine is a simple 2D game engine developed in Go using the SDL2 library. Engine is still in early development as the API is being planned around the offerings of SDL2 as well as continued improvements to Ghost itself.
 
 ## Languages
 - PHP / Laravel
