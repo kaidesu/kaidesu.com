@@ -61,6 +61,7 @@ class Post
                         'title'      => $document->title,
                         'source'     => $document->source,
                         'source_url' => $document->source_url ?? null,
+                        'reading_time' => $this->calculateReadingTime($document->body()),
                         'content'    => (new Parsedown)->text($document->body()),
                     ];
                 })
@@ -83,5 +84,17 @@ class Post
 
             return $post;
         });
+    }
+
+    protected function calculateReadingTime($content, $wpm = 250)
+    {
+        $wordCount = str_word_count($content);
+        $time      = ceil($wordCount / $wpm);
+
+        if ($time == 1) {
+            return $time.' min';
+        }
+
+        return $time.' mins';
     }
 }

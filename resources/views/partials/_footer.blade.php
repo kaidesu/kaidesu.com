@@ -1,5 +1,38 @@
+@php
+    function toRoman($number) {
+        $roman = '';
+        $map = [
+            'M'  => 1000,
+            'CM' => 900,
+            'D'  => 500,
+            'CD' => 400,
+            'C'  => 100,
+            'XC' => 90,
+            'L'  => 50,
+            'XL' => 40,
+            'X'  => 10,
+            "IX" => 9,
+            'V'  => 5,
+            'IV' => 4,
+            'I'  => 1,
+        ];
+
+        while ($number > 0) {
+            foreach ($map as $numeral => $int) {
+                if ($number >= $int) {
+                    $number -= $int;
+                    $roman .= $numeral;
+                    break;
+                }
+            }
+        }
+
+        return $roman;
+    }
+@endphp
+
 <footer>
-    <div class="p-6 md:flex md:items-center md:justify-between lg:px-8">
+    <div class="max-w-4xl mx-auto p-6 md:flex md:items-center md:justify-between">
         <div class="flex justify-center space-x-3 md:order-2">
             <a href="https://twitter.com/@kai___desu" target="_blank" class="text-gray-400 hover:text-blue-400">
                 <span class="sr-only">Twitter</span>
@@ -17,8 +50,8 @@
         </div>
 
         <div class="mt-8 md:mt-0 md:order-1">
-            <p class="text-center text-base leading-6 text-gray-400">
-                &copy; {{ date('Y') }} Shea Lewis (Kai)
+            <p class="text-center italic text-base leading-6 text-gray-400">
+                Kai, &copy; {{ toRoman(date('Y')) }}
             </p>
         </div>
     </div>

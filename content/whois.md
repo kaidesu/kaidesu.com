@@ -1,7 +1,7 @@
 ---
-title: "/whois"
+title: "Whois"
 date: 2019-05-08
-draft: true
+draft: false
 ---
 
 Hi there 👋 My name is <u>Shea Lewis</u>, but friends call me **Kai**.

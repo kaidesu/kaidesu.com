@@ -28,3 +28,27 @@ pre, pre[class*="language-"] {
         @apply p-0 border-none leading-relaxed;
     }
 }
+
+.source {
+    @apply inline-flex items-center text-sm font-mono leading-4 text-gray-900 mr-2;
+
+    @screen md {
+        @apply w-24 px-2.5 py-0.5;
+    }
+
+    &__icon {
+        @apply h-2 w-2 text-gray-400;
+
+        @screen md {
+            @apply -ml-0.5;
+        }
+    }
+
+    &__label {
+        @apply hidden;
+
+        @screen md {
+            @apply flex flex-1 ml-1.5;
+        }
+    }
+}
