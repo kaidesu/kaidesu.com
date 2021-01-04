@@ -9,10 +9,19 @@ Outside of my day job, I work on a multitude of side projects. I'm a big fan of 
 These projects have been released in some form or another and are used in production. Most are open source while some are not.
 
 [**Ghost**](https://ghostlang.org)
-A small class-based programming language with an interpreter built with Go. The name and logo are inspired by Ghost in the Shell.
+A small class-based programming language with an interpreter built with Go. The name and logo are inspired by Ghost in the Shell. Ghost can be easily installed on mac using homebrew.
+
+[**Ghost VSCode Extension**](https://github.com/ghost-language/vscode)
+Provides Visual Studio Code support (syntax highlighting and snippets) for Ghost.
+
+[**ghostlang.org**](https://ghostlang.org/)
+The official website for Ghost, including documentation and technical blog posts on the language.
 
 [**Engine**](https://github.com/ghost-language/engine)
 A simple 2D game engine to make games in Ghost inspired by Love2D, Pico-8, and DOME. The base application is built with Go, embeds Ghost and utilizes SDL2 to interface with the audio, keyboard, mouse, joystick and graphics hardware via OpenGL and Direct3D.
+
+[**Toy Lexer**](https://github.com/ghost-language/toy-lexer)
+A simple working example of a lexer written in Go. This was developed by going through the Lexing portion of [Writing An Interpreter In Go](https://interpreterbook.com/) with some improvements made from my work on Ghost.
 
 [**FusionCMS**](https://beta.getfusioncms.com)
 My main role at efelle creative is building a content management system (CMS) called FusionCMS. I've lead development since version 5 of its release, and we're currently working towards releasing version 6 sometime this year. FusionCMS is the largest on-going project I've work on, having been used to build and launch over 200 websites.
@@ -32,8 +41,17 @@ A software release platform specifically built for FusionCMS v5. This has multip
 [**Music**](https://github.com/kaidesu/music)
 A self-hosted music server, fashioned after Spotify and used to host and stream my personal music library.
 
+[**Conway's Game of Life**](https://github.com/ghost-language/engine/blob/nightly/demos/conway/main.ghost)
+Built as a means to test Ghost and Engine's capabilities.
+
+[**Ghoul**](https://github.com/kaidesu/ghoul)
+An easy way to execute PHP scripts with Composer support without having to configure Composer's autoloader. Focus on the task at hand and freely use Composer dependencies as if they were a native part of PHP 🎃
+
 ## Archived
 These projects have been archived from production use; mostly from the inability to dedicate time to maintaining them. Regardless, most of these are still usable in one form or another.
+
+[**Ghost in C**](https://github.com/ghost-language/cghost)
+The first version of Ghost's interpreter was actually built in C as a bytecode virtual machine. This was mostly based off the works of [Crafting Interpreters](https://craftinginterpreters.com/a-bytecode-virtual-machine.html) before I moved on to rebuild things in Go, which I like to refer to as the "modern rendition of C". Still blazingly fast and comes with a very robust standard library out of the box, _with_ full unicode support. Sign me up!
 
 [**Tengu**](https://github.com/tengu-framework/tengu)
 A learning endevour to deep-dive how popular web frameworks (CodeIgniter, Laravel) process requests and return responses. I'm still very proud of this work and hope to one day rebuild this using Ghost. A variation of this once powered a small set of websites built at efelle creative.
