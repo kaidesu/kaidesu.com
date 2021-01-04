@@ -3,7 +3,7 @@ title: "Projects"
 date: 2021-01-03
 ---
 
-Outside of my day job, I work on a multitude of side projects. I'm a big fan of building your own tools. Not only does it allow you to build around your specific workflow, but it also allows you to explore a wide range of interesting projects to gain experience within.
+Outside of my day job, I work on a multitude of side projects. I'm a big fan of building your own tools. Not only does it allow you to build around your specific workflow, but it also allows you to explore a wide range of interesting projects to gain experience in. The projects listed below are in no particular order.
 
 ## Released
 These projects have been released in some form or another and are used in production. Most are open source while some are not.
@@ -31,3 +31,21 @@ A software release platform specifically built for FusionCMS v5. This has multip
 
 [**Music**](https://github.com/kaidesu/music)
 A self-hosted music server, fashioned after Spotify and used to host and stream my personal music library.
+
+## Archived
+These projects have been archived from production use; mostly from the inability to dedicate time to maintaining them. Regardless, most of these are still usable in one form or another.
+
+[**Tengu**](https://github.com/tengu-framework/tengu)
+A learning endevour to deep-dive how popular web frameworks (CodeIgniter, Laravel) process requests and return responses. I'm still very proud of this work and hope to one day rebuild this using Ghost. A variation of this once powered a small set of websites built at efelle creative.
+
+[**Proton**](https://github.com/proton-ui/proton)
+An elegant collection of renderless Vue.js UI components. I really like the approach of renderless components used for UI and UX. Proton provided the API, leaving you to roll your own styles or make use of utility-first CSS frameworks, such as Tailwind, to fit your project and needs.
+
+[RiveScript PHP Interpreter](https://github.com/axiom-labs/rivescript-php)
+A RiveScript interpreter for PHP. I never finished this one - but got it to the point to support the basics of the scripting language. RiveScript is a simple scripting language to create the "brain" of chatbots. It can be used to craete some cleaverly designed scripts to cover a lot of use cases. I thought it would be great for server bots — [blog post](/2018/01/rivescript-development-log-part-1)
+
+[Codex](https://github.com/codex-project/codex)
+An easy to use file-based documentation platform using Laravel. Content is stored in markdown files with a clean theme to instantly get up and running with beautiful documentation. One of the key features was its "drivers". Codex supported two out of the box; `local` and `git`. Local read from a `local` directory on your server, while `git` dynamically cloned and kept documentation up to date stored within a Git repository. I turned this project over to Robin Radic to continue development in 2016.
+
+**Hermes**
+A closed-source internal ticketing system built for efelle creative. We very briefly used it to track internal support requests; from server provision requests to restocking coffee in the kitchen. This was replaced by GitHub and their issue board feature.
