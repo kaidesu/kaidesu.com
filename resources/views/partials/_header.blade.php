@@ -4,7 +4,7 @@
 
         <div class="flex items-center text-sm">
             <a href="/" class="mr-4">posts</a>
-            {{-- <a href="/projects" class="mr-4">/projects</a> --}}
+            <a href="/projects" class="mr-4">projects</a>
             <a href="/whois" class="mr-4">whois</a>
             {{-- <a href="/uses" class="mr-4">/uses</a> --}}
             {{-- <a href="/now" class="mr-4">/now</a> --}}
