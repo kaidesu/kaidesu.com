@@ -47,6 +47,9 @@ Built as a means to test Ghost and Engine's capabilities.
 [**Ghoul**](https://github.com/kaidesu/ghoul)
 An easy way to execute PHP scripts with Composer support without having to configure Composer's autoloader. Focus on the task at hand and freely use Composer dependencies as if they were a native part of PHP 🎃
 
+[PHP GPIO](https://github.com/axiom-labs/php-gpio)
+I had come across a simple implementation working with the GPIO interface through PHP and decided to make a simple Composer package out of it. I used this library to wire up a custom magnetic contact switch to detect when my apartment door was open/closed all through PHP hosted on a Raspberry Pi Zero.
+
 ## Archived
 These projects have been archived from production use; mostly from the inability to dedicate time to maintaining them. Regardless, most of these are still usable in one form or another.
 
@@ -59,11 +62,23 @@ A learning endevour to deep-dive how popular web frameworks (CodeIgniter, Larave
 [**Proton**](https://github.com/proton-ui/proton)
 An elegant collection of renderless Vue.js UI components. I really like the approach of renderless components used for UI and UX. Proton provided the API, leaving you to roll your own styles or make use of utility-first CSS frameworks, such as Tailwind, to fit your project and needs.
 
+**Hermes**
+A closed-source internal ticketing system built for efelle creative. We very briefly used it to track internal support requests; from server provision requests to restocking coffee in the kitchen. This was replaced by GitHub and their issue board feature.
+
 [RiveScript PHP Interpreter](https://github.com/axiom-labs/rivescript-php)
 A RiveScript interpreter for PHP. I never finished this one - but got it to the point to support the basics of the scripting language. RiveScript is a simple scripting language to create the "brain" of chatbots. It can be used to craete some cleaverly designed scripts to cover a lot of use cases. I thought it would be great for server bots — [blog post](/2018/01/rivescript-development-log-part-1)
 
 [Codex](https://github.com/codex-project/codex)
 An easy to use file-based documentation platform using Laravel. Content is stored in markdown files with a clean theme to instantly get up and running with beautiful documentation. One of the key features was its "drivers". Codex supported two out of the box; `local` and `git`. Local read from a `local` directory on your server, while `git` dynamically cloned and kept documentation up to date stored within a Git repository. I turned this project over to Robin Radic to continue development in 2016.
 
-**Hermes**
-A closed-source internal ticketing system built for efelle creative. We very briefly used it to track internal support requests; from server provision requests to restocking coffee in the kitchen. This was replaced by GitHub and their issue board feature.
+**Hanzai**
+A very simple map overlay that interfaced with the Seattle Police Department Police Report Incident API. Built to explore API and at the time, to learn the FuelPHP framework before I made the hop over to Laravel — [blog post](/2013/11/project-hanzai)
+
+## Unfinished
+These projects I started but never finished for one reason or another. I may one day finish them, then again, maybe I won't 🤔
+
+**Aya**
+A recipe and meal planning application. Use to collect your go-to recipes for home-cooking, plan your weekly meals, and generate shopping lists of items needed.
+
+**Kaizen**
+A personal virtual assistant with a simple text interface and text-to-speech/speech-to-text capabilities for more natural human-computer interactions. Open source variant of Google Home/Alexa/Siri hosted on a Raspberry Pi. The idea was to make this modular, to host productivity tools to keep track of notes, contacts, your music library, etc. through one interface.
