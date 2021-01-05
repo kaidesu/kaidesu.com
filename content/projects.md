@@ -27,7 +27,7 @@ A simple working example of a lexer written in Go. This was developed by going t
 My main role at efelle creative is building a content management system (CMS) called FusionCMS. I've lead development since version 5 of its release, and we're currently working towards releasing version 6 sometime this year. FusionCMS is the largest on-going project I've work on, having been used to build and launch over 200 websites.
 
 **Apollo**
-A closed-source website monitoring tool built during my time at efelle creative. It's integrated with Slack and pings a specific channel to notify our support and sysops teams of sites that become unresponsive. It checks all websites we host and support every minute from a server in the US. If a site becomes unresponsive, a second drone worker will verify the results in Europe in which case a Slack message is sent out to the team.
+A closed-source website monitoring tool built during my time at efelle creative. It's integrated with Slack and pings a specific channel to notify our support and sysops teams of sites that become unresponsive.
 
 **Athena**
 A closed-source encrypted password manager. Used to securely store and share passwords for various accounts by multiple people.
