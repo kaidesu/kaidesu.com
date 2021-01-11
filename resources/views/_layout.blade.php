@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+
+<html class="font-sans">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180827913-1"></script>
@@ -18,7 +20,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body>
+    <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400">
         @include('partials._header')
 
         <div class="flex-1">

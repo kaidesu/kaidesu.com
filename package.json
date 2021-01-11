@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.3.1",
+        "alpinejs": "^2.8.0",
         "autoprefixer": "^9.8.6",
         "axios": "^0.21",
         "babel-plugin-prismjs": "^2.0.1",
