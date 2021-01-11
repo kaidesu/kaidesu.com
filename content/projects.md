@@ -53,6 +53,9 @@ I had come across a simple implementation working with the GPIO interface throug
 [nomimasu](https://nomimasu.app/)
 A simple spaced repitition system (SRS) to collect and learn Japanese vocabulary, sentences, and kanji. I developed this shortly before visiting Japan to help cram more Japanese into my skull to better prepare my communication and navigation skills. While in Japan, I continued to collect and input common phrases and sentences I came across during my time there into the SRS.
 
+**Chronos**
+An application that sends messages through Telegram for repeatable reminders at a specific time. For example, I use this to ping myself when I need to study Japanese at 9am and 1pm everyday. Reminders can be scheduled from a range of every minute to yearly and everything in between. Reminders can also be set on specific days of each month, or specific days of the week (Sunday through Saturday).
+
 ## Archived
 These projects have been archived from production use; mostly from the inability to dedicate time to maintaining them. Regardless, most of these are still usable in one form or another.
 
