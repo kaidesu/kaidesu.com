@@ -82,3 +82,6 @@ A recipe and meal planning application. Use to collect your go-to recipes for ho
 
 **Kaizen**
 A personal virtual assistant with a simple text interface and text-to-speech/speech-to-text capabilities for more natural human-computer interactions. Open source variant of Google Home/Alexa/Siri hosted on a Raspberry Pi. The idea was to make this modular, to host productivity tools to keep track of notes, contacts, your music library, etc. through one interface.
+
+**Caffeinated Gamification**
+A gamification package for Laravel, to easily add in badges, XP, and user levels to be obtained by encouraging visitors to join and participate in your online community.
