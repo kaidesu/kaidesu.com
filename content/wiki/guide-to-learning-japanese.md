@@ -1,7 +1,8 @@
 ---
-title: "A Beginner-Intermediate's Guide to Learning Japanese"
+title: "Guide to Learning Japanese"
 draft: true
-source: original
+notable: true
+category: "Japanese"
 ---
 
 ## Introduction

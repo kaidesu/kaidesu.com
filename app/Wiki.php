@@ -9,7 +9,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Illuminate\Contracts\Cache\Repository as Cache;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
-class Page
+class Wiki
 {
     /**
      * The filesystem implementation.
@@ -40,13 +40,13 @@ class Page
 
     public function getAll()
     {
-        return $this->cache->remember("pages.all", 5, function() {
-            return collect($this->files->files(base_path('content')))
+        return $this->cache->remember("wiki.all", 5, function() {
+            return collect($this->files->files(base_path('content/wiki')))
                 ->filter(function($path) {
                     return Str::endsWith($path, '.md');
                 })
                 ->map(function($path) {
-                    $filename           = Str::after($path, 'content/');
+                    $filename           = Str::after($path, 'content/wiki/');
                     [$slug, $extension] = explode('.', $filename, 3);
                     $document           = YamlFrontMatter::parse($this->files->get($path));
                     $date               = new \Carbon\Carbon($document->date);
@@ -58,9 +58,12 @@ class Page
                         'month'   => $date->format('m'),
                         'day'     => $date->format('d'),
                         'slug'    => $slug,
-                        'url'     => route('pages.show', [$slug]),
+                        'url'     => route('wiki.show', [$slug]),
                         'title'   => $document->title,
-                        'source'  => $document->source,
+                        'meta'    => $document->meta ?? false,
+                        'notable' => $document->notable ?? false,
+                        'ignore'  => $document->ignore ?? false,
+                        'category' => $document->category ?? 'Uncategorized',
                         'content' => (new GithubFlavoredMarkdownConverter)->convertToHtml($document->body()),
                     ];
                 })
@@ -68,8 +71,10 @@ class Page
             });
     }
 
-    public function get($slug)
+    public function get($slug = '')
     {
+        if (! $slug) return $this->getAll();
+
         return $this->cache->remember("page.{$slug}", 5, function() use ($slug) {
             $page = $this->getAll()
                 ->where('slug', $slug)

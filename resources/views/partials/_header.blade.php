@@ -5,6 +5,7 @@
         <div class="flex items-center text-sm">
             <a href="/" class="mr-4">posts</a>
             <a href="/projects" class="mr-4">projects</a>
+            <a href="/wiki" class="mr-4">wiki</a>
             <a href="/whois" class="mr-4">whois</a>
             <a href="#" x-show="localStorage.theme === 'dark'" @click.prevent="localStorage.theme = 'light'; theme = 'light'" class="mr-4">
                 <x-icon.sun class="w-5 h-5" />
