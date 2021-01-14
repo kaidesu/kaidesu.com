@@ -48,4 +48,20 @@ class WikiController extends Controller
 
         return view('wiki.show', compact('page'));
     }
+
+    /**
+     * Show the specific wiki page.
+     */
+    public function source($url = '')
+    {
+        $url  = str_replace('.source', '', $url);
+        $page = $this->wiki->get($url);
+
+        if (! $page) {
+            abort(404);
+        }
+
+        return response($page->source, 200)
+            ->header('Content-Type', 'text/plain');
+    }
 }

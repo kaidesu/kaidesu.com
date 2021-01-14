@@ -48,7 +48,8 @@ class Wiki
                 ->map(function($path) {
                     $filename           = Str::after($path, 'content/wiki/');
                     [$slug, $extension] = explode('.', $filename, 3);
-                    $document           = YamlFrontMatter::parse($this->files->get($path));
+                    $source             = $this->files->get($path);
+                    $document           = YamlFrontMatter::parse($source);
                     $date               = new \Carbon\Carbon($document->date);
 
                     return (object) [
@@ -64,6 +65,7 @@ class Wiki
                         'notable' => $document->notable ?? false,
                         'ignore'  => $document->ignore ?? false,
                         'category' => $document->category ?? 'Uncategorized',
+                        'source'   => $source,
                         'content' => (new GithubFlavoredMarkdownConverter)->convertToHtml($document->body()),
                     ];
                 })
