@@ -8,7 +8,7 @@ category: "Japanese Vocabulary"
 | Good morning | おはようございます |
 | Hello | こんにちは |
 | Good evening | こんばんは |
-| How are you? | お元気ですか？ |
-| I'm fine | 元気です |
-| See you tomorrow | では明日 |
+| How are you? | お<x-ruby reading="げんき">元気</x-ruby>ですか？ |
+| I'm fine | <x-ruby reading="げんき">元気</x-ruby>です |
+| See you tomorrow | では<x-ruby reading="あした">明日</x-ruby> |
 | Later! See ya! | じゃね　・　またね　・　じゃあまたね |

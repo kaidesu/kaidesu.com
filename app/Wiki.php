@@ -4,6 +4,8 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\View;
 use Illuminate\Filesystem\Filesystem;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Illuminate\Contracts\Cache\Repository as Cache;
@@ -66,7 +68,7 @@ class Wiki
                         'ignore'  => $document->ignore ?? false,
                         'category' => $document->category ?? 'Uncategorized',
                         'source'   => $source,
-                        'content' => (new GithubFlavoredMarkdownConverter)->convertToHtml($document->body()),
+                        'content'  => $this->compile((new GithubFlavoredMarkdownConverter)->convertToHtml($document->body())),
                     ];
                 })
                 ->sortByDesc('title');
@@ -88,5 +90,28 @@ class Wiki
 
             return $page;
         });
+    }
+
+    protected function compile($template, array $data = []): string
+    {
+        $filename = uniqid('blade_');
+
+        $path = storage_path('app/views');
+
+        View::addLocation($path);
+
+        $filepath = $path . DIRECTORY_SEPARATOR . "$filename.blade.php";
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        file_put_contents($filepath, trim($template));
+
+        $rendered = (\View::make($filename, $data))->render();
+
+        unlink($filepath);
+
+        return $rendered;
     }
 }
