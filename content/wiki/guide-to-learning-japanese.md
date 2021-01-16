@@ -1,5 +1,5 @@
 ---
-title: "Guide to Learning Japanese"
+title: "Guide to learning Japanese"
 draft: true
 notable: true
 category: "Japanese"

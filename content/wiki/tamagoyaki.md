@@ -1,5 +1,5 @@
 ---
-title: "Tamagoyaki Seasoning (玉子焼き)"
+title: "Tamagoyaki seasoning (玉子焼き)"
 category: "Japanese Cuisine"
 ---
 

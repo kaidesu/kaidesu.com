@@ -1,5 +1,5 @@
 ---
-title: "First Meetings"
+title: "First meetings"
 category: "Japanese Vocabulary"
 ---
 
