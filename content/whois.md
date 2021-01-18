@@ -10,7 +10,7 @@ Hi there 👋 My name is <u>Shea Lewis</u>, but friends call me **Kai**.
 
 I'm a web developer based in **Seattle** with 10 years of experience building web-based software solutions.
 
-My primary focus has been back-end PHP development, building systems, platforms, and tools that facilated front-end developement and design teams to build and launch websites. I consider PHP as my "native" programming language.
+My primary focus has been back-end PHP development, building systems, platforms, and tools that facilitated front-end development and design teams to build and launch websites. I consider PHP as my "native" programming language.
 
 ## Contact Information
 - **Email:** shea.lewis@hey.com
