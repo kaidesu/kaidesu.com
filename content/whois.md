@@ -8,7 +8,7 @@ Hi there 👋 My name is <u>Shea Lewis</u>, but friends call me **Kai**.
 
 こんにちは 👋 私の名前は「シェア・ルレス」ですが、友達は私を「カイ」と申します。日本語を少し話せます。どうぞよろしくお願いします。
 
-I'm a web developer based in **Seattle** with over 8 years of experience building web-based software solutions.
+I'm a web developer based in **Seattle** with 10 years of experience building web-based software solutions.
 
 My primary focus has been back-end PHP development, building systems, platforms, and tools that facilated front-end developement and design teams to build and launch websites. I consider PHP as my "native" programming language.
 
