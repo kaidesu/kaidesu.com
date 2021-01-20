@@ -25,19 +25,19 @@ class Wanikani extends Component
         });
 
         $radicals = Cache::remember('wanikani.radicals', 60, function() use ($wanikani) {
-            $response = $wanikani->get('assignments?subject_types=radical&srs_stages=5,6,7,8,9');
+            $response = $wanikani->get('assignments?subject_types=radical&srs_stages=7,8,9');
 
             return json_decode($response->getBody());
         });
 
         $kanji = Cache::remember('wanikani.kanji', 60, function() use ($wanikani) {
-            $response = $wanikani->get('assignments?subject_types=kanji&srs_stages=5,6,7,8,9');
+            $response = $wanikani->get('assignments?subject_types=kanji&srs_stages=7,8,9');
 
             return json_decode($response->getBody());
         });
 
         $vocabulary = Cache::remember('wanikani.vocabulary', 60, function() use ($wanikani) {
-            $response = $wanikani->get('assignments?subject_types=vocabulary&srs_stages=5,6,7,8,9');
+            $response = $wanikani->get('assignments?subject_types=vocabulary&srs_stages=7,8,9');
 
             return json_decode($response->getBody());
         });
