@@ -3,7 +3,7 @@
         <a href="/" class="font-bold">kai desu.</a>
 
         <div class="flex items-center text-sm">
-            <a href="/" class="mr-4">posts</a>
+            <a href="/dashboard" class="mr-4">dashboard</a>
             <a href="/projects" class="mr-4">projects</a>
             <a href="/wiki" class="mr-4">wiki</a>
             <a href="/whois" class="mr-4">whois</a>

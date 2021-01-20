@@ -18,6 +18,7 @@
 
         <title>kai desu.</title>
 
+        @livewireStyles
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400">
@@ -29,6 +30,7 @@
 
         @include('partials._footer')
 
+        @livewireScripts
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

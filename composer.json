@@ -16,6 +16,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "league/commonmark": "^1.5",
+        "livewire/livewire": "^2.3",
         "spatie/yaml-front-matter": "^2.0",
         "symfony/browser-kit": "^5.1"
     },
