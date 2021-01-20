@@ -1,4 +1,4 @@
-<div wire:poll.60s>
+<div wire:poll.30s>
     <dl class="grid grid-cols-2 gap-5 lg:grid-cols-4 pb-5">
         <x-stat title="Level" :value="$level"/>
         <x-stat title="Lessons" :value="$lessons"/>
