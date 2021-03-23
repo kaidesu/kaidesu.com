@@ -33,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [Wanikani::class];
+        return [];
     }
 }

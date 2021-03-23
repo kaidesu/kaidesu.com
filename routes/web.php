@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PostsController@index')->name('posts.index');
 Route::get('/{year}/{month}/{slug}', 'PostsController@show')->name('posts.show');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-
 Route::get('/wiki', 'WikiController@index')->name('wiki.index');
 Route::get('/wiki/{url?}.source', 'WikiController@source')->name('wiki.source');
 Route::get('/wiki/{url?}', 'WikiController@show')->name('wiki.show');
