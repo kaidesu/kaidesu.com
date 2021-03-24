@@ -1,13 +1,11 @@
 @extends('_layout')
 
 @section('content')
-    <div class="max-w-4xl mx-auto p-6">
-        <h1 class="text-5xl font-bold mb-3 text-gray-900 dark:text-gray-300">
-            Wiki
-        </h1>
-    </div>
+    <h1 class="text-5xl font-bold text-gray-900 dark:text-gray-300">
+        Wiki
+    </h1>
 
-    <div class="max-w-4xl mx-auto p-6 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 mt-12">
         <div>
             <h3 class="font-bold text-3xl sm:text-2xl mb-2">Newest</h3>
 

@@ -9,7 +9,7 @@ use Illuminate\Filesystem\Filesystem;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
-class Post
+class Article
 {
     /**
      * The filesystem implementation.
@@ -40,13 +40,13 @@ class Post
 
     public function getAll()
     {
-        return $this->cache->remember("posts.all", 5, function() {
-            return collect($this->files->allFiles(base_path('content/posts')))
+        return $this->cache->remember("articles.all", 5, function() {
+            return collect($this->files->allFiles(base_path('content/articles')))
                 ->filter(function($path) {
                     return Str::endsWith($path, '.md');
                 })
                 ->map(function($path) {
-                    $filename                  = Str::after($path, 'posts/');
+                    $filename                  = Str::after($path, 'articles/');
                     [$date, $slug, $extension] = explode('.', $filename, 3);
                     $date                      = Carbon::createFromFormat('Y-m-d', $date);
                     $document                  = YamlFrontMatter::parse($this->files->get($path));
@@ -59,7 +59,7 @@ class Post
                         'month'      => $date->format('m'),
                         'day'        => $date->format('d'),
                         'slug'       => $slug,
-                        'url'        => route('posts.show', [$date->format('Y'), $date->format('m'), $slug]),
+                        'url'        => route('articles.show', [$date->format('Y'), $date->format('m'), $slug]),
                         'title'      => $document->title,
                         'source'     => $document->source,
                         'source_url' => $document->source_url ?? null,
@@ -105,10 +105,7 @@ class Post
         $wordCount = str_word_count($content);
         $time      = ceil($wordCount / $wpm);
 
-        if ($time == 1) {
-            return $time.' min';
-        }
 
-        return $time.' mins';
+        return $time.' min read';
     }
 }

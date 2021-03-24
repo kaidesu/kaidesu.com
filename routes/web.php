@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostsController@index')->name('posts.index');
-Route::get('/{year}/{month}/{slug}', 'PostsController@show')->name('posts.show');
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/articles', 'ArticlesController@index')->name('articles.index');
+Route::get('/{year}/{month}/{slug}', 'ArticlesController@show')->name('articles.show');
+
+Route::get('/whois', function() {
+    return redirect('/experience');
+});
 
 Route::get('/wiki', 'WikiController@index')->name('wiki.index');
 Route::get('/wiki/{url?}.source', 'WikiController@source')->name('wiki.source');

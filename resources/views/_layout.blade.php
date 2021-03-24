@@ -24,13 +24,15 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400">
-        @include('partials._header')
+        <div class="container max-w-3xl mx-auto">
+            @include('partials._header')
 
-        <div class="flex-1">
-            @yield('content')
+            <div class="flex-1 p-6 mt-12">
+                @yield('content')
+            </div>
+
+            @include('partials._footer')
         </div>
-
-        @include('partials._footer')
 
         @livewireScripts
         <script src="{{ asset('js/app.js') }}"></script>
