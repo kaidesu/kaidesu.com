@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\App;
 use Illuminate\Filesystem\Filesystem;
@@ -48,23 +49,24 @@ class Article
                 ->map(function($path) {
                     $filename                  = Str::after($path, 'articles/');
                     [$date, $slug, $extension] = explode('.', $filename, 3);
-                    $date                      = Carbon::createFromFormat('Y-m-d', $date);
+                    $date                      = CarbonImmutable::createFromFormat('Y-m-d', $date);
                     $document                  = YamlFrontMatter::parse($this->files->get($path));
 
                     return (object) [
-                        'draft'      => $document->draft,
-                        'path'       => $path->getPathName(),
-                        'date'       => $date,
-                        'year'       => $date->format('Y'),
-                        'month'      => $date->format('m'),
-                        'day'        => $date->format('d'),
-                        'slug'       => $slug,
-                        'url'        => route('articles.show', [$date->format('Y'), $date->format('m'), $slug]),
-                        'title'      => $document->title,
-                        'source'     => $document->source,
-                        'source_url' => $document->source_url ?? null,
+                        'draft'        => $document->draft,
+                        'path'         => $path->getPathName(),
+                        'date'         => $date,
+                        'year'         => $date->format('Y'),
+                        'month'        => $date->format('m'),
+                        'day'          => $date->format('d'),
+                        'slug'         => $slug,
+                        'url'          => route('articles.show', [$date->format('Y'), $date->format('m'), $slug]),
+                        'title'        => $document->title,
+                        'source'       => $document->source,
+                        'source_url'   => $document->source_url ?? null,
                         'reading_time' => $this->calculateReadingTime($document->body()),
-                        'content'    => (new Parsedown)->text($document->body()),
+                        'is_old'       => $this->isOld($date),
+                        'content'      => (new Parsedown)->text($document->body()),
                     ];
                 })
                 ->filter(function($post) {
@@ -107,5 +109,10 @@ class Article
 
 
         return $time.' min read';
+    }
+
+    protected function isOld($date)
+    {
+        return Carbon::now()->greaterThanOrEqualTo($date->addYear());
     }
 }
