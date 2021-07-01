@@ -1,5 +1,5 @@
 ---
-title: "Project hanzai"
+title: "Project Hanzai"
 publishAt: 2013-11-27
 draft: false
 ---
@@ -18,7 +18,7 @@ Not only that, but it also provides Latitude and Longitude coordinates for each 
 
 After I'd say, a couple days of setting to work on this and tinkering around, this is what I came out with:
 
-![Screenshot](/storage/posts/project_hanzai.png)
+![Screenshot](/posts/project_hanzai.png)
 
 Using FuelPHP I was easily able to connect and access the information provided by the API. Google Maps is a breeze to integrate with, as well as the ability to customize the look and feel. And finally, Bootstrap played a part in allowing me to easily lay everything out without hassle.
 

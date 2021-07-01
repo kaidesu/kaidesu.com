@@ -56,8 +56,7 @@
                 <svg class="w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
 
                 <span class="text-gray-500 font-mono">
-                    [localhost]
-                    <!-- [{{ parse_url($article->source_url)['host'] }}] -->
+                    [{{ getHostname(post.source) }}]
                 </span>
             </div>
         </div>
@@ -96,7 +95,14 @@ export default {
             const oneYear = 1000 * 60 * 60 * 24 * 365
 
             return diff > oneYear
-        }
+        },
+
+        getHostname(string) {
+            const url = new URL(string)
+            const host = url.hostname
+
+            return host
+        },
     }
 }
 </script>

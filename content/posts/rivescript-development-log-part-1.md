@@ -1,0 +1,36 @@
+---
+title: "Rivescript development log part 1"
+publishAt: 2018-01-04
+draft: false
+---
+
+It's been a couple months since I've pushed an update to the RiveScript PHP package. I've hit a bit of a roadblock in development in two areas:
+
+- Sorting triggers
+- Loading multiple RiveScript documents into the interpretor
+
+One of my top goals with the PHP interpretor of the RiveScript working draft, is to approach the code in an object-oriented manner that is easy to maintain and read in the future. While I do think that I'm on the right track, I felt my first attempt of the  implementation was messy. So, I've been working on a new restructured version which I've been pretty happy with so far.
+
+## The Restructure
+
+### Unit Tests
+Right off the bat I started the project with unit tests. Tests are important to verify the interpretor is functioning according to the working draft based on a test Rivescript brain.
+
+![Rivescript Tests](/posts/rivescript_tests.png)
+
+I also spent some time setting up a gulp process to automatically fire off all unit tests when I update any PHP file. This has been imensly helpful knowing whether I've broken/fixed/implemented a feature in realtime as I develop.
+
+![Rivescript Notification](/posts/rivescript_notification.png)
+
+### Organization
+I spent a lot of time on the organizational aspects of the new codebase, thinking of how all the pieces fall together.
+
+I treat everything as an object (which is good if I'm building with OOP in mind!) in a cascading fashion. The modular state allows me to easily add additional features without having to scroll through hundreds of lines of code to add another `switch` statement (or the like) to a single file.
+
+![Rivescript Treeview](/posts/rivescript_treeview.png)
+
+**Commands**, **tags**, and **triggers** each map back to their respective counterparts as outlined in the [Rivescript Working Draft](https://www.rivescript.com/wd/RiveScript).
+
+While I still have a ways to go for complete coverage, I feel a lot better with the restructure knowing that it's covered by tests as well as flexible for future growth.
+
+I'll write up another post in the next few days outlining the interpretor process in more detail.

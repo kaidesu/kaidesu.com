@@ -1,0 +1,24 @@
+---
+title: "Laravel Homestead alias"
+publishAt: 2019-05-08
+draft: false
+---
+
+The following alias will make interacting with Homestead a lot easier.
+
+```
+# Homestead
+alias homestead='function __homestead() {
+    if [[ $@ == "config" ]]; then
+        command open ~/Homestead/Homestead.yaml
+    elif [[ $@ == "aliases" ]]; then
+        command open ~/Homestead/aliases
+    else
+        (cd ~/Homestead && vagrant $*);
+    fi
+}; __homestead'
+```
+
+- `homestead config` will open your Homestead configuration file
+- `homestead aliases` will open your Homestead alias file
+- `homestead ...` referencing any vagrant command off of homestead will forward the command accordingly. (e.g. `homestead ssh` to SSH into your Homestead machine)

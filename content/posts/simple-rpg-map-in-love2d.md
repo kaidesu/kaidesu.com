@@ -1,0 +1,192 @@
+---
+title: "Simple RPG map in Love2D"
+publishAt: 2017-10-27
+draft: false
+---
+
+## Prerequisites
+A basic understanding of Lua, Love2D, and Tiled Map Editor.
+
+## Resources
+- [Tiled Map Editor](http://www.mapeditor.org/)
+- [Simple Tiled Implementation](https://github.com/karai17/Simple-Tiled-Implementation)
+- [Keeney's Map Pack](https://kenney.nl/assets/map-pack)
+
+## Preperation
+I'm going to assume that you have the resources and Tile Map Editor downloaded and installed on your system. To prep, we'll be setting up our working directory and copying over our tileset to be worked with.
+
+It's important to keep your projects and files organized, so take some time if needed to find something that's comfortable for you. I have a `~/Code/Games` directory within my user directory that I store my projects in for example.
+
+### Project Structure
+Within your projects directory, create a new directory for this tutorial and call it `simple-rpg-map`. From here, let's scaffold our directories with the following:
+
+```
+|-- simple-rpg-map
+    |-- src/
+        |-- lib/
+        |-- maps/
+        |-- tiles/
+        |-- conf.lua
+        |-- main.lua
+```
+
+### Copying Resources
+Great! We have our directories set up and ready to go. Now let's copy over our resources so they're ready to go.
+
+#### Lib
+Extract **Simple Tiled Implementation** and copy the entire `sti` folder to your `lib` directory.
+
+#### Tiles
+Extract **Kenney's Map Pack** and copy the `Tilesheet/mapPack_tilesheet.png` file to your `tiles` directory. From here, rename it to `overworld.png`.
+
+Our directory should now look like the following:
+
+```
+|-- simple-rpg-map
+    |-- src/
+        |-- lib/
+            |-- sti/
+        |-- maps/
+        |-- tiles/
+            |-- overworld.png
+        |-- conf.lua
+        |-- main.lua
+```
+
+## Creating Our Map
+Now the fun begins! Let's create our map shall we? Go ahead and fire up Tiled Map Editor and create a new map. You'll be presented with the following:
+
+![New Map Dialog](/posts/love2d_rpg_new_map_dialog.png)
+
+Go ahead and leave the orientation, layer format, and render order as their defaults. Since we're creating your basic 2D overhead map these are the exact settings we need.
+
+The tileset we copied from **Kenney's Map Pack** are made up of 64x64 pixels - so go ahead and set the width and height to `64`. Lastly, we're going to set our map size to `15` x `15` as well.
+
+| Property | Value |
+|----------|-------|
+| Orientation | Orthogonal |
+| Tile layer format | Base64 (uncompressed) |
+| Tile render order | Right Down |
+| Map size width | `15` tiles |
+| Map size height | `15` tiles |
+| Tile size width | `64` px |
+| Tile size height | `64` px |
+
+Save the map within your projects `maps` directory, and also give it the name **overworld**.
+
+### Loading Our Tileset
+Now that we have our map, we can load in our tileset. In the bottom right corner of Tiled Map Editor, you'll find the **Tilesets** panel. In the bottom left corner of *that* panel, you'll find a small icon that looks like a piece of paper with a gold star. Click that little guy to create a new tileset.
+
+![New Tileset Button](/posts/love2d_rpg_new_tileset_button.png)
+
+You'll be presented with another window much like we were when we first created our map:
+
+![New Tileset Dialog](/posts/love2d_rpg_new_tileset_dialog.png)
+
+As the name of our tileset, give it **Overworld**. Next, click on the **Browse** button and select your **overworld.png** image from your `tiles` directory. Finally, set the tile width and height to `64`, and ensure that the margin and spacing values are set to `0`.
+
+| Property | Value |
+|----------|-------|
+| Name | Overworld |
+| Type | Based on Tileset Image |
+| Source | `path/to/your/tiles/overworld.png` |
+| Tile width | `64` px |
+| Tile height | `64` px |
+| Margin | `0` px |
+| Spacing | `0` px |
+
+Again, save the tileset within your `tiles` directory with the name of **overworld**. Afterwards, you'll be presented with a new tab with your loaded tileset:
+
+![Loaded Tileset](/posts/love2d_rpg_loaded_tileset.png)
+
+Switch back to your map - you'll now find your newly loaded tileset in the bottom right panel. Play around from here by painting with your tiles and come up with an overworld of your own. Here's what I came up with:
+
+![Map Layout](/posts/love2d_rpg_map_layout.png)
+
+Once you have your map, export it as a lua file; **File > Export As...**, and I'm sure you've guessed it: save it to your `maps` directory as **overworld**.
+
+![Export As](/posts/love2d_rpg_export_as.png)
+
+That wraps up the portion of creating our map! Now let's get this thing rendered in Love.
+
+## Configuring Love2D
+Let's configure some base settings with our game. Open up your `conf.lua` file and place the following:
+
+```lua
+function love.conf(t)
+    t.window.title = "Simple RPG Map"
+    t.window.width = 960
+    t.window.height = 960
+end
+```
+
+If a file called `conf.lua` is found within your game folder, it is automatically ran *before* Love goes through its load process.
+
+Our `conf.lua` file contains one function, `love.conf`. This method  takes one argument: a table in which you can override the default configuration values that Love comes set up with out of the box. Here, we're simply setting a few things for our project:
+
+- The window's title
+- The window's width
+- The window's height
+
+The title is self-explanatory, however, you may be wondering where I got the values of the width and height from. In reality, you can set these to whatever you want. But in our case, since we want to display our entire map, and we know the dimensions of our tiles and map, we can estimate how large our map is as a whole.
+
+```
+64 * 15 = 960
+```
+
+## Loading Our Map
+We're currently interested in loading our map we created earlier into our game. So first off, we need to pull in the **Simple Tiled Implementation** library.
+
+```
+local sti = require "lib/sti"
+```
+
+Not too shabby. Now let's use it to load our map. Create a method below that called `love.load()`, and here we will add the following:
+
+```lua
+map = sti("maps/overworld.lua")
+```
+
+And that's all that's needed. Our map is now loaded within our game instance. However, if you go to run your game, you'll still see a pretty black window.
+
+![Black Window](/posts/love2d_rpg_black_window.png)
+
+## Drawing Our Map
+To wrap this tutorial up, we'll finally draw our map to the screen.
+
+Create a new `love.draw()` method and add the following:
+
+```
+map:draw(0, 0)
+```
+
+If you fire up your game, you should be presented with your map!
+
+![Rendered Map](/posts/love2d_rpg_rendered_map.png)
+
+## Conclusion
+You've learned how to create and export a map from **Tiled Map Editor** for use within the Love2D engine. You've also learned how to pull in and require a plugin to load and render your map into your game instance. At the end of this, your lua files should contain the following:
+
+### `conf.lua`
+```lua
+function love.conf(t)
+	t.window.title = "Simple RPG Map"
+    t.window.width = 960
+    t.window.height = 960
+end
+```
+
+### `main.lua`
+```lua
+local sti = require "lib/sti"
+
+function love.load()
+	map = sti("maps/overworld.lua")
+end
+
+function love.draw()
+	map:draw(0, 0)
+end
+```
+
+In the next tutorial, we'll look at how we can add a controllable character to our map to move around our world.
