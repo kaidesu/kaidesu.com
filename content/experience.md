@@ -5,10 +5,9 @@ draft: false
 ---
 I'm a web developer based in **Seattle** with 10 years of experience building web-based software solutions.
 
-My primary focus has been back-end PHP development, building systems, platforms, and tools that facilitated front-end development and design teams to build and launch websites. I consider PHP as my "native" programming language.
+My primary focus has been back-end development, building systems, platforms, and tools that facilitated front-end development and design teams to build and launch websites.
 
 ## Contact Information
-- **Email:** shea.lewis@hey.com
 - **Website:** https://kaidesu.com
 - **GitHub:** https://github.com/kaidesu
 - **Twitter:** https://twitter.com/@kai___desu
@@ -16,9 +15,9 @@ My primary focus has been back-end PHP development, building systems, platforms,
 ## Work Experience
 
 ### Director of Application Development
-efelle creative, Seatlle, WA — (August 2017 - Present)
+efelle creative, Seattle, WA — (August 2017 - Present)
 
-- Manage a team of ~4 application developers and system administrators.
+- Managed a team of ~4 application developers and system administrators.
 - Formed the system administrators department as a dedicated team focused on hosting and monitoring of over 300 websites.
 - Designed and lead development of FusionCMS version five.
 - Designed and developed the Matrix system, a means of auto-generating system architecture based on content needs. Drastically cut down design, development and content entry hours.
@@ -51,16 +50,6 @@ Electric Function, Seattle, WA — (October 2012 - June 2013)
 
 ## Open Source
 
-### FusionCMS
-PHP, Laravel, https://beta.getfusioncms.com
-
-FusionCMS is the result of my work at efelle creative. FusionCMS was once a propietary CMS developed in-house, but was made fully open source with the development and beta release of version six. I was lead architect and developer, designing the system as a whole from the ground up based on my work with version five. Both the user experience and developer experience were paramount in the development of the platform.
-
-### Caffeinated Packages
-PHP, Laravel, https://caffeinatedpackages.com
-
-Developed a series of packages for the Laravel framework, facilitating the development of large web applications. All packages combined have seen over **500,000 downloads** and the most popular package hitting **900 stars** on GitHub. Packages include adding modular plug-and-play support, permission system, theming system, menu generation, and improved asset management through PHP.
-
 ### Ghost
 Go, https://ghostlang.org
 
@@ -70,6 +59,16 @@ Ghost is a small embeddable scripting language developed in Go. I started the de
 Go, https://github.com/ghost-language/engine
 
 Engine is a simple 2D game engine developed in Go using the SDL2 library. Engine is still in early development as the API is being planned around the offerings of SDL2 as well as continued improvements to Ghost itself.
+
+### FusionCMS
+PHP, Laravel, https://beta.getfusioncms.com
+
+FusionCMS is the result of my work at efelle creative. FusionCMS was once a propietary CMS developed in-house, but was made fully open source with the development and beta release of version six. I was lead architect and developer, designing the system as a whole from the ground up based on my work with version five. Both the user experience and developer experience were paramount in the development of the platform.
+
+### Caffeinated Packages
+PHP, Laravel, https://caffeinatedpackages.com
+
+Developed a series of packages for the Laravel framework, facilitating the development of large web applications. All packages combined have seen over **500,000 downloads** and the most popular package hitting **900 stars** on GitHub. Packages include adding modular plug-and-play support, permission system, theming system, menu generation, and improved asset management through PHP.
 
 ## Languages
 - PHP / Laravel
