@@ -5,5 +5,7 @@
 </h1>
 
 <div class="prose dark:prose-light lg:prose-lg mt-12">
-    I develop code in a variety of languages, including but not limited to: <b>PHP</b>, <b>JavaScript</b>, <b>Go</b>, <b>Lua</b> and <b>Ghost</b>; an object-oriented language I created.
+<p>I develop code in a variety of languages, including but not limited to: <b>PHP</b>, <b>JavaScript</b>, <b>Go</b>, <b>Lua</b> and <b>Ghost</b>; an object-oriented language I created.</p>
+
+<p>I currently work at <b class="text-red-500">Nintendo</b> as a <b>Lead Back-End Developer</b>.</p>
 </div>

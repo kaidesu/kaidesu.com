@@ -5,7 +5,7 @@ draft: true
 ---
 I'm a web developer based in **Seattle** with 10 years of experience building web-based software solutions.
 
-My primary focus has been back-end development, building systems, platforms, and tools that facilitated front-end development and design teams to build and launch websites.
+My primary focus has been back-end development, building systems, platforms, and tools that facilitate front-end development and design teams to build and launch websites.
 
 ## Contact Information
 - **Website:** https://kaidesu.com
@@ -14,8 +14,11 @@ My primary focus has been back-end development, building systems, platforms, and
 
 ## Work Experience
 
+### Lead Back-End Developer
+Nintendo, Redmond, WA - (July 2021 - Present)
+
 ### Director of Application Development
-efelle creative, Seattle, WA — (August 2017 - Present)
+efelle creative, Seattle, WA — (August 2017 - July 2021)
 
 - Managed a team of ~4 application developers and system administrators.
 - Formed the system administrators department as a dedicated team focused on hosting and monitoring of over 300 websites.
