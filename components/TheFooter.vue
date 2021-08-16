@@ -25,47 +25,38 @@
                 </div>
 
                 <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-1">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                                Navigate
-                            </h3>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                            Navigate
+                        </h3>
 
-                            <ul class="mt-4 space-y-4">
-                                <li>
-                                    <a href="/" class="text-base text-gray-500 hover:text-gray-900">
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/posts" class="text-base text-gray-500 hover:text-gray-900">
-                                        Posts
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/projects" class="text-base text-gray-500 hover:text-gray-900">
-                                        Projects
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/experience" class="text-base text-gray-500 hover:text-gray-900">
-                                        Experience
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="mt-4 space-y-4">
+                            <li>
+                                <a href="/" class="text-base text-gray-500 hover:text-gray-900">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/garden" class="text-base text-gray-500 hover:text-gray-900">
+                                    Digital Garden
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/posts" class="text-base text-gray-500 hover:text-gray-900">
+                                    Posts
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
-                <div class="md:grid md:grid-cols-2 md:gap-8">
-                    <p class="text-gray-500 text-sm">
-                        &copy; {{ currentYear }}
-                    </p>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <p class="text-gray-500 text-sm">
+                            &copy; {{ currentYear }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </footer>
 </template>
 
