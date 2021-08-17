@@ -1,5 +1,5 @@
 <template>
-    <div class="container max-w-3xl mx-auto">
+    <div class="container max-w-5xl mx-auto font-sans">
         <TheHeader />
 
         <div class="flex-1 p-6 mt-12">

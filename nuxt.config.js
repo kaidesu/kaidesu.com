@@ -36,6 +36,11 @@ export default {
   buildModules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-analytics',
+    ['@nuxtjs/google-fonts', {
+      families: {
+        'Inter': true,
+      }
+    }],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

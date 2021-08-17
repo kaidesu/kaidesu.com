@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="prose dark:prose-light lg:prose-lg mt-12">
+        <div class="prose dark:prose-light lg:prose-lg prose-yellow mt-12 mx-auto">
             <nuxt-content :document="post" />
 
             <div v-if="post.source">

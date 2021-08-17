@@ -53,10 +53,10 @@ Built as a means to test Ghost and Engine's capabilities.
 [**Ghoul**](https://github.com/kaidesu/ghoul)
 An easy way to execute PHP scripts with Composer support without having to configure Composer's autoloader. Focus on the task at hand and freely use Composer dependencies as if they were a native part of PHP 🎃
 
-[PHP GPIO](https://github.com/axiom-labs/php-gpio)
+[**PHP GPIO**](https://github.com/axiom-labs/php-gpio)
 I had come across a simple implementation working with the GPIO interface through PHP and decided to make a simple Composer package out of it. I used this library to wire up a custom magnetic contact switch to detect when my apartment door was open/closed all through PHP hosted on a Raspberry Pi Zero.
 
-[nomimasu](https://nomimasu.app/)
+[**nomimasu**](https://nomimasu.app/)
 A simple spaced repitition system (SRS) to collect and learn Japanese vocabulary, sentences, and kanji. I developed this shortly before visiting Japan to help cram more Japanese into my skull to better prepare my communication and navigation skills. While in Japan, I continued to collect and input common phrases and sentences I came across during my time there into the SRS.
 
 **Chronos**
@@ -77,10 +77,10 @@ An elegant collection of renderless Vue.js UI components. I really like the appr
 **Hermes**
 A closed-source internal ticketing system built for efelle creative. We very briefly used it to track internal support requests; from server provision requests to restocking coffee in the kitchen. This was replaced by GitHub and their issue board feature.
 
-[RiveScript PHP Interpreter](https://github.com/axiom-labs/rivescript-php)
+[**RiveScript PHP Interpreter**](https://github.com/axiom-labs/rivescript-php)
 A RiveScript interpreter for PHP. I never finished this one - but got it to the point to support the basics of the scripting language. RiveScript is a simple scripting language to create the "brain" of chatbots. It can be used to craete some cleaverly designed scripts to cover a lot of use cases. I thought it would be great for server bots — [blog post](/2018/01/rivescript-development-log-part-1)
 
-[Codex](https://github.com/codex-project/codex)
+[**Codex**](https://github.com/codex-project/codex)
 An easy to use file-based documentation platform using Laravel. Content is stored in markdown files with a clean theme to instantly get up and running with beautiful documentation. One of the key features was its "drivers". Codex supported two out of the box; `local` and `git`. Local read from a `local` directory on your server, while `git` dynamically cloned and kept documentation up to date stored within a Git repository. I turned this project over to Robin Radic to continue development in 2016.
 
 **Hanzai**
