@@ -1,7 +1,0 @@
-body {
-    @apply font-sans bg-gray-50 text-gray-900;
-}
-
-.intro-paragraph:first-letter {
-    @apply font-bold text-6xl float-left mr-2;
-}
