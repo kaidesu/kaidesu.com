@@ -12,15 +12,15 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import image1 from '@/images/photos/kai_desu_an_avatar_for_Kibo_an_AI_tutor_who_encourages_curiosit_8bfefe29-5551-4b82-8ac9-5b37439aad7f.png'
+import image2 from '@/images/photos/kai_desu_clear_night_sky_with_stars_and_visible_galaxies_realis_97123b09-ac02-48c4-89ba-0ca9c7403f69.png'
+import image3 from '@/images/photos/kai_desu_Shibuya_crossing_Japan_while_raining_5a483a10-7bf6-4bb8-b0df-21a36e18d630.png'
+import image4 from '@/images/photos/kai_desu_black_shiba_inu_in_front_of_Tokyo_Tower_Japan_8k_cyber_de41566c-836e-4428-9941-c61245b92d81.png'
+import image5 from '@/images/photos/kai_desu_portal_in_a_forest_while_raining_5c47bc36-2a35-4d63-9bf5-c6429c5491bd.png'
+
+import logoNintendo from '@/images/logos/nintendo.svg'
+import logoEfelle from '@/images/logos/efelle.png'
+
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -126,7 +126,7 @@ function Newsletter() {
           placeholder="Email address"
           aria-label="Email address"
           required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
+          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-purple-400 dark:focus:ring-purple-400/10 sm:text-sm"
         />
         <Button type="submit" className="ml-4 flex-none">
           Join
@@ -139,35 +139,28 @@ function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      company: 'Nintendo',
+      title: 'Lead Backend Developer',
+      logo: logoNintendo,
+      start: '2021',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'efelle creative',
+      title: 'Director of Application Development',
+      logo: logoEfelle,
+      start: '2017',
+      end: '2021',
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'efelle creative',
+      title: 'Application Developer',
+      logo: logoEfelle,
+      start: '2013',
+      end: '2017',
     },
   ]
 
@@ -211,10 +204,6 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
     </div>
   )
 }
@@ -251,23 +240,20 @@ export default function Home({ articles }) {
     <>
       <Head>
         <title>
-          Spencer Sharp - Software designer, founder, and amateur astronaut
+          kai desu. Backend Developer.
         </title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content="I'm Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created."
         />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+            Backend Developer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I'm Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -302,7 +288,6 @@ export default function Home({ articles }) {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
             <Resume />
           </div>
         </div>
