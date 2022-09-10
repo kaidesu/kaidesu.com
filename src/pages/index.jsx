@@ -244,7 +244,7 @@ export default function Home({ articles }) {
         </title>
         <meta
           name="description"
-          content="I'm Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created."
+          content="I’m Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created."
         />
       </Head>
       <Container className="mt-9">
@@ -253,7 +253,7 @@ export default function Home({ articles }) {
             Backend Developer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I'm Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created.
+            I’m Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
