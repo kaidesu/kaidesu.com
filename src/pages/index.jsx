@@ -150,7 +150,7 @@ function Resume() {
     },
     {
       company: 'efelle creative',
-      title: 'Director of Application Development',
+      title: 'Application Development Director',
       logo: logoEfelle,
       start: '2017',
       end: '2021',
@@ -244,7 +244,7 @@ export default function Home({ articles }) {
         </title>
         <meta
           name="description"
-          content="I’m Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created."
+          content="I’m Shea, but friends call me Kai (カイ) and I’m a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created."
         />
       </Head>
       <Container className="mt-9">
@@ -253,26 +253,26 @@ export default function Home({ articles }) {
             Backend Developer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Kai (カイ), a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created.
+          I’m Shea, but friends call me Kai (カイ) and I’m a web developer based in Seattle. I develop code in a variety of languages, including but not limited to: Javascript, Typescript, PHP, Go, Lua and Ghost; an object-oriented language I created.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com"
+              href="https://twitter.com/kai___desu"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
             <SocialLink
-              href="https://instagram.com"
+              href="https://instagram.com/kai_desu"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
-              href="https://github.com"
+              href="https://github.com/kaidesu"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/shea-lewis-3a676b204/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />

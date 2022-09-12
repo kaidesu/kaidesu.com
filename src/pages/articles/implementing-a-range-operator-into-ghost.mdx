@@ -1,0 +1,348 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Kai',
+  date: '2020-10-26',
+  title: 'Implementing A Range Operator Into Ghost',
+  description:
+    "In this post I show how easy it is to extend and build new functionality into Ghost by adding a new range operator `..` into the core language.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+> This is a post I originally wrote for Ghost's blog [here](https://ghostlang.org/blog/2020/10/implementing-a-range-operator-into-ghost). Ghost is an embeddable programming language I developed in Go as a means to experiment with language design.
+
+## Introduction
+
+This post was inspired by an article written over at [PHP Internals](https://phpinternals.net/articles/implementing_a_range_operator_into_php) detailing a similar topic by implementing a range operator into PHP.
+
+Here, we'll demonstrate how to implement a new operator into Ghost. Doing so will allow us to cover the following topics:
+
+- **Updating our available tokens:** When introducing a new element to our language, we need to create a token that we will later parse and extract information from to make evaluation easier.
+- **Updating the lexer:** We'll take a look at how the lexer works and how we'll traverse the raw source code fed to the interpreter to convert our range operator into its associated token.
+- **Updating the parser:** Our parser determines where and how the range operator can be used, as well as what _precedence_ it has in comparison to our other operators.
+- **Updating the evaluator:** Our evaluator is the final step in our journey as we'll now handle _what_ the range operator actually performs during execution of our program.
+- **Writing tests:** As Ghost is a programming language, it is the bedrock on which developers will use to develop programs of their own. As such, our implementation must be as bullet proof as possible, and we should avoid breaking features in future updates. Having a robust test suit covering every details of our language will keep everything in check.
+
+The above items cover a large portion of the internal working of Ghost's implementation in Go and its tree-walking interpreter. There are some aspects we will not be covering as we will not need to work with them, such as the object and abstract syntax tree systems. We may cover these in a separate but similar blog post in the future.
+
+## The Range Operator
+
+The operator that will be added into Ghost in this post will be called the range operator (`..`). To keep things simple, the range operator will be defined with the following semantics:
+
+1. The incrementation step will always be `1`
+2. Both operands must be `numbers`
+
+If any of the above semantics are not satisfied, then an `Error` will be thrown.
+
+### Examples
+
+```typescript
+1 .. 3            // >> [1, 2, 3]
+2.5 .. 5          // >> [2.5, 3.5, 4.5]
+1 .. number('3')  // >> [1, 2, 3]
+
+a := b := 1
+a .. b            // >> [1]
+
+2 .. 1            // Error
+1 .. '1'          // Error
+foo() .. 1        // Error
+```
+
+## Updating Tokens
+
+The first step, and argubly the simplest one, will be registering our new token. When we perform a lexical analysis or scan of our raw Ghost source code, we will have a token that signifies our range operator.
+
+All tokens can be found within `tokens/token.go`. This is largely a very simple file. What we're interested in is the `const` table of tokens:
+
+```go
+// token/token.go
+
+// [...]
+// The list of tokens.
+const (
+	// Special tokens
+	ILLEGAL = "ILLEGAL"
+    EOF     = "EOF"
+    // [...]
+```
+
+We're simply going to add a new value here - it doesn't matter where it goes but we'll try to keep things organized, so we'll place it under the `MINUSMINUS` token. We're going to call our new token `RANGE` and simply assign what its token representation will be.
+
+```go
+// token/token.go
+
+// [...]
+MINUSMINUS = "--"
+
+RANGE = ".."
+// [...]
+```
+
+Perfect! We have our new token. That wasn't so bad. Let's move on to the lexer.
+
+## Updating The Lexer
+
+The lexer takes source code as input and outputs the tokens that represent it. The lexer does this token by token, character by character.
+
+Behind the scenes, our lexer repeatedly calls a `NextToken()` method, which will walk through our source code and output each token it comes across.
+
+Before we jump into the heart of things, let's first update our test like the responsible developers that we are.
+
+```go
+// lexer/lexer_test.go
+
+// [...]
+
+func TestNextToken(t *testing.T) {
+    input := `five := 5;
+    // [...]
+    1 .. 10
+    `
+
+    tests := []struct {
+		expectedType    token.TokenType
+		expectedLiteral string
+	}{
+        // [...]
+        {token.NUMBER, "1"},
+        {token.RANGE, ".."},
+        {token.NUMBER, "10"},
+        {token.EOF, ""},
+    }
+    // [...]
+}
+```
+
+All we're concerned about here is that our lexer properly identifies three tokens from the source `1 .. 10`:
+
+- `token.NUMBER`, for `1`
+- `token.RANGE`, for `..`
+- `token.NUMBER`, for `10`
+
+Updating our test wasn't so bad. If we run it now it'll fail because our lexer doesn't know how to generate our new `RANGE` token.
+
+As mentioned earlier, our lexer repeatedly calls a method called `NextToken()` which examines each character of our source code, one by one, and returns a token depending on which (of combination of) character it is.
+
+If we take a look at this, you'll find that it's a simple switch statement! Ghost already has a switch case for dot (`.`) -- we just need to update this to peek ahead and see if the next character is also a dot (`.`), and if so, return our `RANGE` token.
+
+We can achieve this by using the lexer's `peekCharacter()` method.
+
+```go
+// lexer/lexer.go
+
+func (lexer *Lexer) NextToken() token.Token {
+    // [...]
+    switch lexer.character {
+    // [...]
+    case '.':
+        if lexer.peekCharacter() == '.' {
+            character := lexer.character
+			lexer.readCharacter()
+			literal := string(character) + string(lexer.character)
+			currentToken = token.Token{Type: token.RANGE, Literal: literal}
+        } else {
+            currentToken = newToken(token.DOT, lexer.character)
+        }
+    }
+    // [...]
+}
+```
+
+This may seem like a lot, so let's break it down:
+
+1. First, we peek ahead and see if the next character is also a dot (`.`)
+2. We store the current token (`.`) in a temporary variable
+3. We call `readCharacter()` method, which reads in the next character. This updates the `lexer.character` value, which is why we stored the previous character in a temporary variable
+4. We construct our literal value, which is a combination of the previous and current characters (`..`)
+5. We assign the `currentToken` variable which our new token instance, defining the type (`token.RANGE`) and literal value (`..`)
+
+If our `peekCharacter()` method does not find another dot (`.`) character, we simply return a `DOT` token.
+
+With that though, we can now run our tests and see that it passes! Our lexer updates are complete.
+
+```
+Running tool: /usr/local/bin/go test -timeout 30s ghostlang.org/x/ghost/lexer -run ^TestNextToken$
+
+ok  	ghostlang.org/x/ghost/lexer	0.276s
+```
+
+## Updating The Parser
+
+Ghost uses a hand-written parser rather than use a parse generator (yacc, bison, ANTLR and the like). There are many different strategies and approaches to parsing source code; the one Ghost uses is a top-down operator precedence parser, also called a **Pratt parser** named after its inventor, **Vaughan Pratt**.
+
+Our range operator is whats called an **infix operator**. Infix operators sit inbetween its operands, like this:
+
+```go
+1 + 2
+```
+
+In the above example, the `+` operator sits inbetween the two number literals `1` and `2`. **Precedence** comes into play when we need to evaluate these operators in any combination:
+
+```go
+1 + 2 * 3
+```
+
+We all learned in math class about the **order of operations**:
+
+1. Parentheses
+2. Exponents (i.e. powers, square roots, etc.)
+3. Multiplication and Division
+4. Addition and Subtraction
+
+This is exactly what we're doing here and what the Pratt parser allows us to easily achieve. When Ghost encounters an expression like `1 + 2 * 3`, it evaluates it as `1 + (2 * 3)`, netting us the correct value of `7`.
+
+Luckily for us, Ghost already has implementations to easily take care of all this. So let's go through and register our new infix range operator with the parser. But first! Let's update our parser test. We already have a test for infix expressions, so it's just a matter of adding a new test expression to the list:
+
+```go
+// parser/parser_test.go
+
+// [...]
+func TestParsingInfixExpressions(t *testing.T) {
+    infixTests := []struct {
+		input      string
+		leftValue  interface{}
+		operator   string
+		rightValue interface{}
+	}{
+        // [...]
+        {"1 .. 10", 1, "..", 10},
+    }
+    // [...]
+```
+
+Now that we have a test in place, let's register what precedence the range operator will have, and register it with the parser. This will be easier than you think!
+
+First, register a new precedence constant:
+
+```go
+// parser/parser.go
+
+const (
+    _ int = iota
+    LOWEST
+    // [...]
+    AND
+    RANGE
+    // [...]
+)
+```
+
+The order in which these constants are defined is very important, as it defines the hiearchy each operator type has over the other. In this case, we've placed our `RANGE` operator right below our logical `and` operator.
+
+Next, we register and assign the `RANGE` token with our new precedence value:
+
+```go
+// parser/parser.go
+
+// [...]
+var precedences = map[token.TokenType]int{
+    // [...]
+    token.RANGE: RANGE
+}
+// [...]
+```
+
+Now all we need to do is register the infix operator itself to be parsed:
+
+```go
+// parser/parser.go
+
+// [...]
+func New(l *lexer.Lexer) *Parser {
+    // [...]
+    p.registerInfix(token.DOT, p.parseDotNotationExpression)
+    p.registerInfix(token.RANGE, p.parseInfixExpression)
+    // [...]
+}
+// [...]
+```
+
+And with that, we're done with updating the parser! In terms of pure code, we only needed to add about 3 lines of code to support our range operator. How amazing is that?
+
+## Updating The Evaluator
+
+We've registered a new token, updated the lexer, and updated the parser -- we have all the pieces in place to properly evaluate _what_ the range opreator actually does. As always, we'll first write a test:
+
+```go
+// evaluator/evaluator_test.go
+
+// [...]
+func TestRangeOperators(t *testing.T) {
+    tests := []struct {
+        input string
+        expected interface{}
+    }{
+        {`1 .. 0`, []int{}},
+        {`-1 .. 0`, []int{-1, 0}},
+        {`1 .. 1`, []int{1}},
+        {`1 .. 5`, []int{1, 2, 3, 4, 5}},
+    }
+
+    for _, tt := range tests {
+        evaluated := testEval(tt.input)
+
+        switch expected := tt.expected.(type) {
+        case []int:
+            list, ok := evaluated.(*object.List)
+
+            if !ok {
+                t.Errorf("object not List. got=%T (%+v)", evaluated, evaluated)
+                continue
+            }
+
+            if len(list.Elements) != len(expected) {
+                t.Errorf("wrong number of elements. want=%d, got=%d", len(expected), len(list.Elements))
+                continue
+            }
+        }
+    }
+}
+```
+
+We take a similar approach to other tests we've written here -- we have a map of various forms of our range operator and the expected returned value. We then loop through and actually evaluate our test code to check whether the value returned is the one we were expecting.
+
+Now that we have our test (and it's failing), we can update the evaluator to turn range expressions (`1 .. 3`) into a List object (`[1, 2, 3]`).
+
+Once again, we already evaluate infix operators and specifically, infix operators where both operands are numbers in `evalNumberInfixExpression()`. This is another simple switch statement. All we need to do is add a new case for our range operator (`..`).
+
+```go
+// evaluator/evaluator.go
+
+func evalNumberInfixExpression(node *ast.InfixExpression, operator string, left object.Object, right object.Object, env *object.Environment) object.Object {
+    switch operator {
+        // [...]
+        case "..":
+            numbers := make([]object.Object, 0)
+            one := decimal.NewFromInt(1)
+            num := leftValue
+
+            for {
+                numbers = append(numbers, &object.Number{Value: num})
+
+                if num.GreaterThanOrEqual(rightValue) break
+
+                num = num.Add(one)
+            }
+
+            return &object.List{Elements: numbers}
+        default:
+        // [ ..]
+```
+
+Ghost utilizies decimals for its number system, so we have to work with things a little differently here than you might expect, but the approach is the same.
+
+1. Create a loop, starting at our left operand value
+2. Append the number to our map
+3. Check if the number is greater than or equal to the right operand
+4. If not, increment the number and loop again
+5. If so, break out of the loop and return the List object
+
+And with that, our evaluator update is complete. We can now fully utilize our new range operator within our Ghost programs!
+
+## Conclusion
+
+We've covered a lot here, seeing some of the core steps the interpreter takes; reading the raw source code, converting it into a series of tokens, parsing and then finally evaluating the results to be executed by the computer.
+
+The range operator and `for (___ in ___)` statements will be available in v0.4.0.
